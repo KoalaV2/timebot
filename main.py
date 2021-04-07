@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from discord.ext import commands
 import json
 import sqlite3
@@ -17,12 +18,12 @@ def createdatabase():
     conn.commit()
     conn.close()
 
+
+@bot.event
+async def on_ready():
+    print("Bot is online.")
+
 def main():
-
-    @bot.event
-    async def on_ready():
-        print("Bot is online.")
-
     @bot.command()
     async def echo(ctx, *, content:str):
         await ctx.send(content)
@@ -30,5 +31,5 @@ def main():
     bot.run(token)  # Where 'TOKEN' is your bot token
 
 if __name__ == "__main__":
-    createdatabase()
-    #main()
+#    createdatabase()
+    main()
